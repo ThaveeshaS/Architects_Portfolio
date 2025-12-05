@@ -28,7 +28,6 @@ const Nav = () => {
     { name: 'ABOUT', href: '/about' },
     { name: 'SERVICES', href: '/services' },
     { name: 'PROJECTS', href: '/projects' },
-    { name: 'NEWS', href: '/news' },
   ];
 
   return (

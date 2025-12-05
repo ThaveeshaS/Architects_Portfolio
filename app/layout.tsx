@@ -27,19 +27,38 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
-          // Strip extension-injected attributes that cause hydration mismatches (e.g., Katalon)
+          // Strip extension-injected attributes that cause hydration mismatches (e.g., Katalon, Grammarly)
           dangerouslySetInnerHTML={{
             __html: `(() => {
-              const attr = 'katalonextensionid';
-              const strip = () => document.documentElement.removeAttribute(attr);
-              strip();
-              // In case the extension re-applies the attribute before or during hydration
-              const observer = new MutationObserver((mutations) => {
-                for (const m of mutations) {
-                  if (m.type === 'attributes' && m.attributeName === attr) strip();
+              const targets = [
+                { el: () => document.documentElement, attrs: ['katalonextensionid', 'data-gr-ext-installed', 'data-new-gr-c-s-check-loaded'] },
+                { el: () => document.body, attrs: ['data-gr-ext-installed', 'data-new-gr-c-s-check-loaded'] },
+              ];
+
+              const stripAll = () => {
+                for (const { el, attrs } of targets) {
+                  const node = el();
+                  if (!node) continue;
+                  for (const attr of attrs) {
+                    if (node.hasAttribute(attr)) node.removeAttribute(attr);
+                  }
                 }
+              };
+
+              stripAll();
+
+              const observer = new MutationObserver((mutations) => {
+                let needsStrip = false;
+                for (const m of mutations) {
+                  if (m.type === 'attributes') {
+                    needsStrip = true;
+                    break;
+                  }
+                }
+                if (needsStrip) stripAll();
               });
-              observer.observe(document.documentElement, { attributes: true });
+
+              observer.observe(document.documentElement, { attributes: true, subtree: true });
             })();`,
           }}
         />
