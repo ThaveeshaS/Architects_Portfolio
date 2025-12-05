@@ -177,7 +177,7 @@ export default function ProjectsPage() {
             className="flex flex-col items-center"
         >
             <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wide text-center">
-                Our Portfolio
+                Our Poroject
             </h1>
             <motion.div 
                 initial={{ width: 0 }}
