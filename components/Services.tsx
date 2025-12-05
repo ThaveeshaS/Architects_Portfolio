@@ -44,7 +44,7 @@ const Services = () => {
                 <img 
                     src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop" 
                     alt="Luxury Architecture Services" 
-                    className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 ease-in-out"
                 />
             </motion.div>
 

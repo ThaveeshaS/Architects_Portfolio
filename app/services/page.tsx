@@ -57,10 +57,11 @@ export default function ServicesPage() {
       {/* 1. Header Section */}
       <div className="relative pt-40 pb-20 px-6 md:px-16 bg-[#0a0a0a]">
         <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            className="flex flex-col items-center"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col items-center"
         >
             <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wide text-center">
                 Our Expertise
@@ -82,7 +83,7 @@ export default function ServicesPage() {
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
           className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
@@ -114,7 +115,7 @@ export default function ServicesPage() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.4 }}
             variants={fadeInUp}
           >
              <span className="text-[#C19D75] text-xs font-bold tracking-[0.2em] uppercase mb-2 block">
@@ -137,7 +138,7 @@ export default function ServicesPage() {
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.8 }}
             className="relative h-[400px] w-full"
           >
@@ -161,7 +162,7 @@ export default function ServicesPage() {
            <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.8 }}
             className="relative h-[400px] w-full order-2 lg:order-1"
           >
@@ -177,7 +178,7 @@ export default function ServicesPage() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.35 }}
             variants={fadeInUp}
             className="order-1 lg:order-2"
           >
@@ -201,12 +202,12 @@ export default function ServicesPage() {
 
       {/* 5. CTA Section */}
       <section className="py-32 px-6 text-center">
-        <motion.div 
-           initial={{ opacity: 0, scale: 0.95 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
-        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.8 }}
+          >
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-wide mb-8">
             Ready to Build Your Vision?
           </h2>
