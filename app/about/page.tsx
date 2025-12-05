@@ -11,8 +11,8 @@ export default function AboutPage() {
     hidden: { opacity: 0, y: 40 },
     visible: { 
       opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+            y: 0,
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
@@ -46,6 +46,7 @@ export default function AboutPage() {
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
+            viewport={{ once: true, amount: 0.3 }}
             className="flex flex-col items-center"
         >
             <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wide text-center">
@@ -68,7 +69,7 @@ export default function AboutPage() {
             <motion.div 
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.3 }}
                 variants={staggerContainer}
                 className="flex flex-col gap-6"
             >
@@ -106,7 +107,7 @@ export default function AboutPage() {
                 <motion.div 
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.4 }}
                     variants={imageReveal}
                     className="relative z-10 shadow-2xl"
                 >
@@ -124,7 +125,7 @@ export default function AboutPage() {
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.4 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                     className="absolute -bottom-10 -left-10 bg-[#111] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gray-800 hidden md:block z-20"
                 >
