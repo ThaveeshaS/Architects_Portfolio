@@ -3,10 +3,14 @@
 import React from 'react';
 import Nav from './Nav';
 import { ArrowRight } from 'lucide-react';
-import { motion, Variants } from 'framer-motion'; // Added Variants type import for better safety
+import { motion, Variants } from 'framer-motion';
 
-const Home = () => {
-  // FIXED: Explicitly added ': Variants' type
+interface HomeProps {
+  startAnimation?: boolean;
+}
+
+const Home: React.FC<HomeProps> = ({ startAnimation = false }) => {
+  
   const textVariant: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
@@ -14,7 +18,6 @@ const Home = () => {
       y: 0,
       transition: { 
         duration: 0.8, 
-        // FIXED: Added 'as const' so TS knows it's a fixed curve of 4 numbers
         ease: [0.16, 1, 0.3, 1] as const 
       }
     }
@@ -35,14 +38,15 @@ const Home = () => {
     <div className="relative w-full h-screen overflow-hidden bg-black">
       <Nav />
 
-      {/* 1. Background Image with Slow Zoom Animation */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <motion.img 
+          // 1. Start zoomed in
           initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
+          // 2. FIX: Only start zooming out to 1 when startAnimation is TRUE
+          animate={startAnimation ? { scale: 1 } : { scale: 1.2 }}
           transition={{ 
             duration: 10, 
-            // FIXED: Added 'as const' here as well
             ease: [0.16, 1, 0.3, 1] as const 
           }}
           src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop" 
@@ -52,11 +56,12 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* 2. Hero Content with Staggered Entrance */}
+      {/* Text Content */}
       <motion.div 
         variants={containerVariant}
         initial="hidden"
-        animate="visible"
+        // 3. Text also waits for the signal
+        animate={startAnimation ? "visible" : "hidden"} 
         className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4"
       >
         
