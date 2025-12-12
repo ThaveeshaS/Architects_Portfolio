@@ -118,13 +118,7 @@ export default function ProjectsPage() {
       location: "Seoul, South Korea",
       image: "https://images.unsplash.com/photo-1506158669146-619067262a00?q=80&w=2070&auto=format&fit=crop"
     },
-    {
-      id: 14,
-      title: "The Concrete Spiral",
-      category: "Public",
-      location: "Brasilia, Brazil",
-      image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2070&auto=format&fit=crop"
-    },
+
     {
       id: 15,
       title: "Zenith Penthouse",
@@ -153,13 +147,7 @@ export default function ProjectsPage() {
       location: "Vancouver, Canada",
       image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=2070&auto=format&fit=crop"
     },
-    {
-      id: 19,
-      title: "The White Arch",
-      category: "Residential",
-      location: "Santorini, Greece",
-      image: "https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=2070&auto=format&fit=crop"
-    }
+
   ];
 
   const selectedProject = projects.find((p) => p.id === selectedId);
